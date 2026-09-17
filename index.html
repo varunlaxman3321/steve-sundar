@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBank - Banking Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #123c69;
+            color: white;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .user {
+            font-size: 16px;
+        }
+
+        /* Main container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        .welcome {
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            margin-bottom: 5px;
+        }
+
+        /* Balance */
+        .balance-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        .balance-card p {
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .balance {
+            font-size: 35px;
+            font-weight: bold;
+            color: #123c69;
+        }
+
+        /* Quick actions */
+        .section-title {
+            margin-bottom: 15px;
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .action {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .action:hover {
+            transform: translateY(-3px);
+        }
+
+        .action-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        /* Content layout */
+        .content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+        }
+
+        /* Transactions */
+        .transactions,
+        .transfer {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .transaction {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .transaction:last-child {
+            border-bottom: none;
+        }
+
+        .transaction-name {
+            font-weight: bold;
+        }
+
+        .date {
+            font-size: 13px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .credit {
+            color: green;
+            font-weight: bold;
+        }
+
+        .debit {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Transfer form */
+        .transfer input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .transfer button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background-color: #123c69;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .transfer button:hover {
+            background-color: #0b2948;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+            background-color: #123c69;
+            color: white;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 20px;
+            }
+
+            .container {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">MyBank</div>
+        <div class="user">Welcome, Varun 👤</div>
+    </header>
+
+    <!-- Main -->
+    <div class="container">
+
+        <div class="welcome">
+            <h2>Banking Dashboard</h2>
+            <p>Manage your account and transactions.</p>
+        </div>
+
+        <!-- Balance -->
+        <div class="balance-card">
+            <p>Available Balance</p>
+            <div class="balance">₹1,25,450.00</div>
+        </div>
+
+        <!-- Quick Actions -->
+        <h3 class="section-title">Quick Actions</h3>
+
+        <div class="actions">
+
+            <div class="action">
+                <div class="action-icon">💸</div>
+                <strong>Transfer Money</strong>
+            </div>
+
+            <div class="action">
+                <div class="action-icon">📥</div>
+                <strong>Deposit</strong>
+            </div>
+
+            <div class="action">
+                <div class="action-icon">💳</div>
+                <strong>Cards</strong>
+            </div>
+
+            <div class="action">
+                <div class="action-icon">📄</div>
+                <strong>Statements</strong>
+            </div>
+
+        </div>
+
+        <!-- Transactions + Transfer -->
+        <div class="content">
+
+            <!-- Recent Transactions -->
+            <div class="transactions">
+
+                <h3 class="section-title">Recent Transactions</h3>
+
+                <div class="transaction">
+                    <div>
+                        <div class="transaction-name">Salary</div>
+                        <div class="date">16 Sep 2026</div>
+                    </div>
+                    <div class="credit">+ ₹75,000</div>
+                </div>
+
+                <div class="transaction">
+                    <div>
+                        <div class="transaction-name">Amazon</div>
+                        <div class="date">15 Sep 2026</div>
+                    </div>
+                    <div class="debit">- ₹4,250</div>
+                </div>
+
+                <div class="transaction">
+                    <div>
+                        <div class="transaction-name">Electricity Bill</div>
+                        <div class="date">12 Sep 2026</div>
+                    </div>
+                    <div class="debit">- ₹2,350</div>
+                </div>
+
+                <div class="transaction">
+                    <div>
+                        <div class="transaction-name">UPI Transfer</div>
+                        <div class="date">10 Sep 2026</div>
+                    </div>
+                    <div class="debit">- ₹5,000</div>
+                </div>
+
+            </div>
+
+            <!-- Transfer Money -->
+            <div class="transfer">
+
+                <h3 class="section-title">Transfer Money</h3>
+
+                <input
+                    type="text"
+                    placeholder="Beneficiary Name"
+                >
+
+                <input
+                    type="text"
+                    placeholder="Account Number"
+                >
+
+                <input
+                    type="number"
+                    placeholder="Amount (₹)"
+                >
+
+                <button onclick="transferMoney()">
+                    Transfer Money
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 MyBank | Secure Banking
+    </footer>
+
+    <script>
+
+        function transferMoney() {
+
+            alert("Transfer request submitted successfully!");
+
+        }
+
+    </script>
+
+</body>
+</html>
