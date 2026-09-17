@@ -6,6 +6,7 @@
     <title>MyBank - Banking Dashboard</title>
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -18,7 +19,10 @@
             color: #333;
         }
 
-        /* Header */
+        /* =========================
+           HEADER
+        ========================= */
+
         header {
             background-color: #123c69;
             color: white;
@@ -37,7 +41,10 @@
             font-size: 16px;
         }
 
-        /* Main container */
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
         .container {
             width: 90%;
             max-width: 1200px;
@@ -52,7 +59,10 @@
             margin-bottom: 5px;
         }
 
-        /* Balance */
+        /* =========================
+           BALANCE CARD
+        ========================= */
+
         .balance-card {
             background: white;
             padding: 25px;
@@ -72,7 +82,10 @@
             color: #123c69;
         }
 
-        /* Quick actions */
+        /* =========================
+           QUICK ACTIONS
+        ========================= */
+
         .section-title {
             margin-bottom: 15px;
         }
@@ -96,6 +109,7 @@
 
         .action:hover {
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
         }
 
         .action-icon {
@@ -103,14 +117,16 @@
             margin-bottom: 10px;
         }
 
-        /* Content layout */
+        /* =========================
+           CONTENT
+        ========================= */
+
         .content {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 25px;
         }
 
-        /* Transactions */
         .transactions,
         .transfer {
             background: white;
@@ -118,6 +134,10 @@
             border-radius: 12px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
+
+        /* =========================
+           TRANSACTIONS
+        ========================= */
 
         .transaction {
             display: flex;
@@ -150,7 +170,10 @@
             font-weight: bold;
         }
 
-        /* Transfer form */
+        /* =========================
+           TRANSFER FORM
+        ========================= */
+
         .transfer input {
             width: 100%;
             padding: 12px;
@@ -175,7 +198,10 @@
             background-color: #0b2948;
         }
 
-        /* Footer */
+        /* =========================
+           FOOTER
+        ========================= */
+
         footer {
             text-align: center;
             padding: 25px;
@@ -184,8 +210,138 @@
             color: white;
         }
 
-        /* Mobile */
+        /* =========================
+           CARD POPUP
+        ========================= */
+
+        .card-popup {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.65);
+
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-container {
+            position: relative;
+        }
+
+        /* =========================
+           DUMMY BANK CARD
+        ========================= */
+
+        .bank-card {
+            width: 430px;
+            height: 250px;
+
+            background: linear-gradient(
+                135deg,
+                #123c69,
+                #1e6aa8
+            );
+
+            border-radius: 18px;
+            padding: 25px;
+
+            color: white;
+
+            position: relative;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .card-bank-name {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .chip {
+            margin-top: 35px;
+
+            width: 48px;
+            height: 35px;
+
+            background-color: #d8b85a;
+
+            border-radius: 6px;
+
+            color: #8a7028;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+        }
+
+        .card-number {
+            font-size: 23px;
+            letter-spacing: 2px;
+            margin-top: 18px;
+        }
+
+        .card-details {
+            display: flex;
+            gap: 45px;
+            margin-top: 18px;
+        }
+
+        .card-details small {
+            display: block;
+            font-size: 9px;
+            opacity: 0.8;
+        }
+
+        .card-details strong {
+            display: block;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .visa {
+            position: absolute;
+            right: 25px;
+            bottom: 20px;
+
+            font-size: 30px;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        /* =========================
+           CLOSE BUTTON
+        ========================= */
+
+        .close {
+            position: absolute;
+
+            right: -35px;
+            top: -35px;
+
+            color: white;
+
+            font-size: 32px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #ddd;
+        }
+
+        /* =========================
+           MOBILE RESPONSIVE
+        ========================= */
+
         @media (max-width: 768px) {
+
             .actions {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -201,122 +357,293 @@
             .container {
                 width: 95%;
             }
+
+            .bank-card {
+                width: 350px;
+                height: 220px;
+                padding: 20px;
+            }
+
+            .card-number {
+                font-size: 18px;
+            }
+
+            .close {
+                right: 0;
+                top: -45px;
+            }
         }
+
     </style>
 </head>
 
 <body>
 
-    <!-- Header -->
+    <!-- =========================
+         HEADER
+    ========================= -->
+
     <header>
-        <div class="logo">MyBank</div>
-        <div class="user">Welcome, Varun 👤</div>
+
+        <div class="logo">
+            MyBank
+        </div>
+
+        <div class="user">
+            Welcome, Varun 👤
+        </div>
+
     </header>
 
-    <!-- Main -->
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
     <div class="container">
 
+        <!-- Welcome -->
+
         <div class="welcome">
-            <h2>Banking Dashboard</h2>
-            <p>Manage your account and transactions.</p>
+
+            <h2>
+                Banking Dashboard
+            </h2>
+
+            <p>
+                Manage your account and transactions.
+            </p>
+
         </div>
 
-        <!-- Balance -->
+
+        <!-- =========================
+             BALANCE
+        ========================= -->
+
         <div class="balance-card">
-            <p>Available Balance</p>
-            <div class="balance">₹1,25,450.00</div>
+
+            <p>
+                Available Balance
+            </p>
+
+            <div class="balance">
+                ₹1,25,450.00
+            </div>
+
         </div>
 
-        <!-- Quick Actions -->
-        <h3 class="section-title">Quick Actions</h3>
+
+        <!-- =========================
+             QUICK ACTIONS
+        ========================= -->
+
+        <h3 class="section-title">
+            Quick Actions
+        </h3>
 
         <div class="actions">
 
-            <div class="action">
-                <div class="action-icon">💸</div>
-                <strong>Transfer Money</strong>
-            </div>
+
+            <!-- Transfer -->
 
             <div class="action">
-                <div class="action-icon">📥</div>
-                <strong>Deposit</strong>
+
+                <div class="action-icon">
+                    💸
+                </div>
+
+                <strong>
+                    Transfer Money
+                </strong>
+
             </div>
 
-            <div class="action">
-                <div class="action-icon">💳</div>
-                <strong>Cards</strong>
-            </div>
+
+            <!-- Deposit -->
 
             <div class="action">
-                <div class="action-icon">📄</div>
-                <strong>Statements</strong>
+
+                <div class="action-icon">
+                    📥
+                </div>
+
+                <strong>
+                    Deposit
+                </strong>
+
+            </div>
+
+
+            <!-- CARDS -->
+
+            <div
+                class="action"
+                onclick="showCard()"
+            >
+
+                <div class="action-icon">
+                    💳
+                </div>
+
+                <strong>
+                    Cards
+                </strong>
+
+            </div>
+
+
+            <!-- Statements -->
+
+            <div class="action">
+
+                <div class="action-icon">
+                    📄
+                </div>
+
+                <strong>
+                    Statements
+                </strong>
+
             </div>
 
         </div>
 
-        <!-- Transactions + Transfer -->
+
+        <!-- =========================
+             TRANSACTIONS + TRANSFER
+        ========================= -->
+
         <div class="content">
 
+
             <!-- Recent Transactions -->
+
             <div class="transactions">
 
-                <h3 class="section-title">Recent Transactions</h3>
+                <h3 class="section-title">
+                    Recent Transactions
+                </h3>
+
 
                 <div class="transaction">
+
                     <div>
-                        <div class="transaction-name">Salary</div>
-                        <div class="date">16 Sep 2026</div>
+
+                        <div class="transaction-name">
+                            Salary
+                        </div>
+
+                        <div class="date">
+                            16 Sep 2026
+                        </div>
+
                     </div>
-                    <div class="credit">+ ₹75,000</div>
+
+                    <div class="credit">
+                        + ₹75,000
+                    </div>
+
                 </div>
 
-                <div class="transaction">
-                    <div>
-                        <div class="transaction-name">Amazon</div>
-                        <div class="date">15 Sep 2026</div>
-                    </div>
-                    <div class="debit">- ₹4,250</div>
-                </div>
 
                 <div class="transaction">
+
                     <div>
-                        <div class="transaction-name">Electricity Bill</div>
-                        <div class="date">12 Sep 2026</div>
+
+                        <div class="transaction-name">
+                            Amazon
+                        </div>
+
+                        <div class="date">
+                            15 Sep 2026
+                        </div>
+
                     </div>
-                    <div class="debit">- ₹2,350</div>
+
+                    <div class="debit">
+                        - ₹4,250
+                    </div>
+
                 </div>
 
+
                 <div class="transaction">
+
                     <div>
-                        <div class="transaction-name">UPI Transfer</div>
-                        <div class="date">10 Sep 2026</div>
+
+                        <div class="transaction-name">
+                            Electricity Bill
+                        </div>
+
+                        <div class="date">
+                            12 Sep 2026
+                        </div>
+
                     </div>
-                    <div class="debit">- ₹5,000</div>
+
+                    <div class="debit">
+                        - ₹2,350
+                    </div>
+
+                </div>
+
+
+                <div class="transaction">
+
+                    <div>
+
+                        <div class="transaction-name">
+                            UPI Transfer
+                        </div>
+
+                        <div class="date">
+                            10 Sep 2026
+                        </div>
+
+                    </div>
+
+                    <div class="debit">
+                        - ₹5,000
+                    </div>
+
                 </div>
 
             </div>
 
-            <!-- Transfer Money -->
+
+            <!-- =========================
+                 TRANSFER MONEY
+            ========================= -->
+
             <div class="transfer">
 
-                <h3 class="section-title">Transfer Money</h3>
+                <h3 class="section-title">
+                    Transfer Money
+                </h3>
+
 
                 <input
                     type="text"
                     placeholder="Beneficiary Name"
                 >
 
+
                 <input
                     type="text"
                     placeholder="Account Number"
                 >
+
 
                 <input
                     type="number"
                     placeholder="Amount (₹)"
                 >
 
-                <button onclick="transferMoney()">
+
+                <button
+                    onclick="transferMoney()"
+                >
                     Transfer Money
                 </button>
 
@@ -326,16 +653,165 @@
 
     </div>
 
-    <!-- Footer -->
+
+    <!-- =========================
+         DUMMY CARD POPUP
+    ========================= -->
+
+    <div
+        id="cardPopup"
+        class="card-popup"
+        onclick="closeCardOutside(event)"
+    >
+
+        <div class="card-container">
+
+
+            <!-- Close Button -->
+
+            <span
+                class="close"
+                onclick="closeCard()"
+            >
+                &times;
+            </span>
+
+
+            <!-- Dummy Card -->
+
+            <div class="bank-card">
+
+
+                <!-- Bank Name -->
+
+                <div class="card-bank-name">
+                    MyBank
+                </div>
+
+
+                <!-- Chip -->
+
+                <div class="chip">
+                    ▰
+                </div>
+
+
+                <!-- Card Number -->
+
+                <div class="card-number">
+                    4532&nbsp;&nbsp;
+                    7812&nbsp;&nbsp;
+                    3456&nbsp;&nbsp;
+                    9012
+                </div>
+
+
+                <!-- Card Details -->
+
+                <div class="card-details">
+
+                    <div>
+
+                        <small>
+                            CARD HOLDER
+                        </small>
+
+                        <strong>
+                            VARUN LAXMAN
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            VALID THRU
+                        </small>
+
+                        <strong>
+                            12/29
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Visa -->
+
+                <div class="visa">
+                    VISA
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
     <footer>
+
         © 2026 MyBank | Secure Banking
+
     </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
     <script>
 
+        /* Transfer Money */
+
         function transferMoney() {
 
-            alert("Transfer request submitted successfully!");
+            alert(
+                "Transfer request submitted successfully!"
+            );
+
+        }
+
+
+        /* Open Card */
+
+        function showCard() {
+
+            document.getElementById(
+                "cardPopup"
+            ).style.display = "flex";
+
+        }
+
+
+        /* Close Card */
+
+        function closeCard() {
+
+            document.getElementById(
+                "cardPopup"
+            ).style.display = "none";
+
+        }
+
+
+        /* Close when clicking outside the card */
+
+        function closeCardOutside(event) {
+
+            if (
+                event.target.id === "cardPopup"
+            ) {
+
+                closeCard();
+
+            }
 
         }
 
